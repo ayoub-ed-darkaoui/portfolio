@@ -1,225 +1,593 @@
-<!doctype html>
-<!--
-  index.html
-  Tailwind-based, dark-mode-first portfolio home page
-  Uses Tailwind CDN for utilities; minimal JS in main.js
--->
-<html lang="en" class="dark">
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Ayoub Ed-darkaoui — Front-End Developer. Responsive, accessible web interfaces using HTML, CSS, JavaScript and Tailwind." />
-    <title>Ayoub Ed-darkaoui — Front-End Developer</title>
+    <!-- Meta Tags for SEO & Responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional portfolio showcasing web development projects, skills, and experience."
+    />
+    <meta
+      name="keywords"
+      content="developer, portfolio, web design, HTML, CSS, JavaScript"
+    />
+    <meta name="author" content="Your Name" />
+    <meta name="theme-color" content="#1a1a2e" />
+    <meta property="og:title" content="Professional Portfolio" />
+    <meta
+      property="og:description"
+      content="Explore my web development projects and skills."
+    />
+    <meta property="og:type" content="website" />
 
-    <!-- Tailwind CDN with small config (dark mode by class) -->
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: '#6c8cff',
-              accent: '#00c2a8'
-            }
-          }
-        }
-      }
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Fallback minimal styling for print or no-js (optional) -->
-    <style>@media (prefers-color-scheme: dark) { html:not(.dark) { color-scheme: dark; } }</style>
+    <title>Professional Portfolio - Web Developer</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="bg-gray-900 text-gray-100 antialiased leading-relaxed">
 
-    <!-- Navbar (reusable) -->
-    <header class="bg-transparent sticky top-0 z-50">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="flex items-center justify-between py-6">
-          <a href="/" class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center text-gray-900 font-bold">AE</div>
-            <span class="font-semibold text-lg">Ayoub Ed-darkaoui</span>
+  <body>
+    <!-- ========== HEADER & NAVIGATION ========== -->
+    <header class="navbar">
+      <nav class="navbar__container">
+        <!-- Logo / Brand -->
+        <div class="navbar__logo">
+          <a href="#home">
+            <span class="logo-text">Portfolio</span>
           </a>
-
-          <!-- Desktop nav -->
-          <nav class="hidden md:flex items-center gap-6">
-            <a href="/" class="text-gray-300 hover:text-white transition">Home</a>
-            <a href="experience.html" class="text-gray-300 hover:text-white transition">Experience</a>
-            <a href="education.html" class="text-gray-300 hover:text-white transition">Education</a>
-            <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
-          </nav>
-
-          <!-- Mobile menu button -->
-          <div class="md:hidden">
-            <button id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" class="p-2 rounded-md bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary">
-              <span class="sr-only">Open menu</span>
-              <!-- icon -->
-              <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
         </div>
-      </div>
 
-      <!-- Mobile menu -->
-      <div id="mobileMenu" class="hidden md:hidden bg-gray-800/60 backdrop-blur-sm">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-3">
-          <a href="/" class="text-gray-200 py-2">Home</a>
-          <a href="experience.html" class="text-gray-200 py-2">Experience</a>
-          <a href="education.html" class="text-gray-200 py-2">Education</a>
-          <a href="#contact" class="text-gray-200 py-2">Contact</a>
-        </div>
-      </div>
+        <!-- Mobile Menu Toggle -->
+        <button class="navbar__toggle" aria-label="Toggle navigation menu">
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <ul class="navbar__menu">
+          <li><a href="#home" class="navbar__link">Home</a></li>
+          <li><a href="#about" class="navbar__link">About</a></li>
+          <li><a href="#skills" class="navbar__link">Skills</a></li>
+          <li><a href="#projects" class="navbar__link">Projects</a></li>
+          <li><a href="#contact" class="navbar__link">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6">
+    <!-- ========== MAIN CONTENT ========== -->
+    <main>
+      <!-- ========== HERO SECTION ========== -->
+      <section id="home" class="hero">
+        <div class="container hero__content">
+          <div class="hero__text">
+            <h1 class="hero__title animate-slide-in">Hi, I'm Ayoub Ed-darkaoui</h1>
+            <p class="hero__subtitle animate-fade-in">
+              Full-Stack Web Developer
+            </p>
+            <p class="hero__description animate-fade-in">
+              Crafting beautiful, responsive, and user-friendly web experiences
+              with modern technologies.
+            </p>
 
-      <!-- Hero -->
-      <section class="pt-12 pb-16 md:pb-24">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
-              Ayoub Ed-darkaoui
-            </h1>
-            <p class="mt-2 text-primary font-semibold">Front-End Developer</p>
-            <p class="mt-6 text-gray-300 max-w-xl">I build production-ready front-end applications with a focus on performance, accessibility, and maintainability. Experienced with modern JavaScript, Tailwind CSS, and design systems.</p>
-
-            <div class="mt-6 flex gap-4">
-              <a href="experience.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-primary to-accent text-gray-900 font-medium hover:scale-105 transition">View Experience</a>
-              <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-gray-700 text-gray-200 hover:bg-gray-800 transition">Projects</a>
+            <!-- Call-to-Action Button -->
+            <div class="hero__cta">
+              <a href="#contact" class="btn btn--primary animate-fade-in"
+                >Get In Touch</a
+              >
+              <a href="#projects" class="btn btn--secondary animate-fade-in"
+                >View My Work</a
+              >
             </div>
-          </div>
 
-          <!-- Visual: professional mock device or headshot -->
-          <div class="order-first md:order-last">
-            <div class="w-full rounded-xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 p-1 shadow-lg">
-              <img src="hero.jpg" alt="Headshot" class="w-full h-64 object-cover rounded-lg" />
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+              <svg
+                class="scroll-mouse"
+                width="26"
+                height="40"
+                viewBox="0 0 26 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="1"
+                  y="1"
+                  width="24"
+                  height="28"
+                  rx="12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="13"
+                  cy="12"
+                  r="2"
+                  fill="currentColor"
+                  class="scroll-wheel"
+                />
+              </svg>
+              <p class="scroll-text">Scroll to explore</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- About -->
-      <section class="py-12" id="about">
-        <h2 class="text-2xl font-semibold">About Me</h2>
-        <p class="mt-4 text-gray-300 max-w-3xl">Senior-level front-end developer with a strong foundation in building scalable web applications. I specialise in creating component-driven UIs, improving performance, and mentoring teams to adopt best practices. Comfortable working across the stack and collaborating with product and design.</p>
-      </section>
-
-      <!-- Skills -->
-      <section class="py-12" id="skills">
-        <h2 class="text-2xl font-semibold">Skills</h2>
-        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Skill card -->
-          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
-            <h3 class="font-medium">HTML</h3>
-            <p class="mt-2 text-gray-300 text-sm">Semantic markup, accessibility, SEO-friendly structure.</p>
-          </div>
-
-          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
-            <h3 class="font-medium">CSS</h3>
-            <p class="mt-2 text-gray-300 text-sm">Modern layouts, animations, design systems.</p>
-          </div>
-
-          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
-            <h3 class="font-medium">JavaScript</h3>
-            <p class="mt-2 text-gray-300 text-sm">ES2020+, DOM, state management, performance optimisations.</p>
-          </div>
-
-          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
-            <h3 class="font-medium">Tailwind CSS</h3>
-            <p class="mt-2 text-gray-300 text-sm">Utility-first workflows, theming, responsive design.</p>
-          </div>
-
-          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
-            <h3 class="font-medium">Git</h3>
-            <p class="mt-2 text-gray-300 text-sm">Branching strategies, code reviews, CI workflows.</p>
+      <!-- ========== ABOUT SECTION ========== -->
+      <section id="about" class="about">
+        <div class="container">
+          <h2 class="section__title">About Me</h2>
+          <div class="about__content">
+            <div class="about__text reveal">
+              <p>
+                I'm a passionate web developer with a keen eye for design and a
+                love for clean, efficient code. With expertise in HTML, CSS, and
+                JavaScript, I build responsive web applications that solve
+                real-world problems.
+              </p>
+              <p>
+                My journey in web development started with a curiosity about how
+                websites work. Over time, I've honed my skills by creating
+                numerous projects and staying up-to-date with the latest web
+                technologies and best practices.
+              </p>
+              <p>
+                When I'm not coding, you can find me exploring new design
+                trends, contributing to open-source projects, or sharing
+                knowledge with the developer community.
+              </p>
+            </div>
+            <div class="about__stats reveal">
+              <div class="stat-card">
+                <span class="stat__number">50+</span>
+                <p class="stat__label">Projects Completed</p>
+              </div>
+              <div class="stat-card">
+                <span class="stat__number">100+</span>
+                <p class="stat__label">Clients Satisfied</p>
+              </div>
+              <div class="stat-card">
+                <span class="stat__number">5+</span>
+                <p class="stat__label">Years Experience</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Projects -->
-      <section class="py-12" id="projects">
-        <h2 class="text-2xl font-semibold">Projects</h2>
-        <div class="mt-6 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <!-- Project card example -->
-          <article class="bg-gray-800 p-5 rounded-lg border border-gray-700 hover:shadow-lg transition">
-            <h3 class="font-semibold">Design System</h3>
-            <p class="mt-2 text-gray-300 text-sm">Built a scalable design system with tokens, components, and documentation. Improved development velocity by 35%.</p>
-            <div class="mt-4 flex gap-2">
-              <a class="text-sm px-3 py-1 rounded bg-primary text-gray-900" href="#">Live</a>
-              <a class="text-sm px-3 py-1 rounded border border-gray-700 text-gray-200" href="#">Code</a>
-            </div>
-          </article>
+      <!-- ========== SKILLS SECTION ========== -->
+      <section id="skills" class="skills">
+        <div class="container">
+          <h2 class="section__title">Skills & Expertise</h2>
+          <div class="skills__grid">
+            <!-- HTML Card -->
+            <article class="skill-card reveal">
+              <div class="skill-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 6L10 38L24 42L38 38L40 6H8Z"
+                    fill="var(--color-accent-1)"
+                  />
+                  <path
+                    d="M24 10V38L35 35L37 10H24Z"
+                    fill="var(--color-accent-1)"
+                  />
+                  <path d="M16 18H26V22H16Z" fill="#1a1a2e" />
+                  <path d="M16 26H28V30H16Z" fill="#1a1a2e" />
+                </svg>
+              </div>
+              <h3 class="skill-title">HTML</h3>
+              <p class="skill-description">
+                Semantic markup, accessibility, SEO optimization
+              </p>
+              <div class="skill-tags">
+                <span class="tag">Semantic</span>
+                <span class="tag">Accessible</span>
+                <span class="tag">SEO-Ready</span>
+              </div>
+            </article>
 
-          <article class="bg-gray-800 p-5 rounded-lg border border-gray-700 hover:shadow-lg transition">
-            <h3 class="font-semibold">Performance Audit Tool</h3>
-            <p class="mt-2 text-gray-300 text-sm">Client project focused on performance profiling and actionable improvements for large e-commerce pages.</p>
-            <div class="mt-4 flex gap-2">
-              <a class="text-sm px-3 py-1 rounded bg-primary text-gray-900" href="#">Live</a>
-              <a class="text-sm px-3 py-1 rounded border border-gray-700 text-gray-200" href="#">Code</a>
-            </div>
-          </article>
+            <!-- CSS Card -->
+            <article class="skill-card reveal">
+              <div class="skill-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 6L10 38L24 42L38 38L40 6H8Z"
+                    fill="var(--color-accent-2)"
+                  />
+                  <path
+                    d="M24 10V38L35 35L37 10H24Z"
+                    fill="var(--color-accent-2)"
+                  />
+                  <circle cx="16" cy="18" r="2" fill="#1a1a2e" />
+                  <circle cx="20" cy="18" r="2" fill="#1a1a2e" />
+                  <circle cx="24" cy="18" r="2" fill="#1a1a2e" />
+                </svg>
+              </div>
+              <h3 class="skill-title">CSS</h3>
+              <p class="skill-description">
+                Flexbox, Grid, Animations, Responsive Design
+              </p>
+              <div class="skill-tags">
+                <span class="tag">Flexbox</span>
+                <span class="tag">Grid</span>
+                <span class="tag">Animations</span>
+              </div>
+            </article>
 
-          <article class="bg-gray-800 p-5 rounded-lg border border-gray-700 hover:shadow-lg transition">
-            <h3 class="font-semibold">Accessible Forms</h3>
-            <p class="mt-2 text-gray-300 text-sm">Library of accessible form components with validation UX improvements and keyboard support.</p>
-            <div class="mt-4 flex gap-2">
-              <a class="text-sm px-3 py-1 rounded bg-primary text-gray-900" href="#">Live</a>
-              <a class="text-sm px-3 py-1 rounded border border-gray-700 text-gray-200" href="#">Code</a>
-            </div>
-          </article>
+            <!-- JavaScript Card -->
+            <article class="skill-card reveal">
+              <div class="skill-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="8"
+                    y="8"
+                    width="32"
+                    height="32"
+                    rx="4"
+                    fill="var(--color-accent-3)"
+                  />
+                  <path d="M18 30V18H14V16H22V18H18V30H18Z" fill="#1a1a2e" />
+                  <path
+                    d="M28 30C30 30 32 28 32 26C32 24 30 22 28 22C27 22 26 22.5 25.5 23V28C26 28.5 27 29 28 29C29.5 29 31 28 31 26C31 25 30 24 28 24"
+                    fill="#1a1a2e"
+                  />
+                </svg>
+              </div>
+              <h3 class="skill-title">JavaScript</h3>
+              <p class="skill-description">
+                DOM manipulation, ES6+, Async programming
+              </p>
+              <div class="skill-tags">
+                <span class="tag">DOM API</span>
+                <span class="tag">ES6+</span>
+                <span class="tag">Async</span>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
-      <!-- Contact -->
-      <section class="py-12" id="contact">
-        <h2 class="text-2xl font-semibold">Contact</h2>
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <form id="contactForm" class="space-y-4 bg-gray-800 p-6 rounded-lg border border-gray-700">
-            <!-- Accessible form, posts via mailto fallback in JS -->
-            <div>
-              <label for="name" class="block text-sm text-gray-300">Name</label>
-              <input id="name" name="name" required class="mt-1 block w-full rounded-md bg-gray-900 border border-gray-700 px-3 py-2" />
+      <!-- ========== PROJECTS SECTION ========== -->
+      <section id="projects" class="projects">
+        <div class="container">
+          <h2 class="section__title">Featured Projects</h2>
+          <div class="projects__grid">
+            <!-- Project Card 1 -->
+            <article class="project-card reveal">
+              <div class="project__image">
+                <img
+                  src="https://via.placeholder.com/400x250/4c6ef5/ffffff?text=Project+1"
+                  alt="Project 1"
+                  loading="lazy"
+                />
+                <div class="project__overlay">
+                  <a href="#" class="btn btn--small" aria-label="View Project 1"
+                    >View Project</a
+                  >
+                </div>
+              </div>
+              <div class="project__content">
+                <h3 class="project__title">Responsive Portfolio</h3>
+                <p class="project__description">
+                  A modern portfolio website built with HTML, CSS, and
+                  JavaScript, featuring smooth animations and responsive design.
+                </p>
+                <div class="project__tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article class="project-card reveal">
+              <div class="project__image">
+                <img
+                  src="https://via.placeholder.com/400x250/06b6d4/ffffff?text=Project+2"
+                  alt="Project 2"
+                  loading="lazy"
+                />
+                <div class="project__overlay">
+                  <a href="#" class="btn btn--small" aria-label="View Project 2"
+                    >View Project</a
+                  >
+                </div>
+              </div>
+              <div class="project__content">
+                <h3 class="project__title">Task Management App</h3>
+                <p class="project__description">
+                  A feature-rich task management application with local storage,
+                  filtering, and a clean user interface.
+                </p>
+                <div class="project__tags">
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">LocalStorage</span>
+                  <span class="tag">UI/UX</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article class="project-card reveal">
+              <div class="project__image">
+                <img
+                  src="https://via.placeholder.com/400x250/10b981/ffffff?text=Project+3"
+                  alt="Project 3"
+                  loading="lazy"
+                />
+                <div class="project__overlay">
+                  <a href="#" class="btn btn--small" aria-label="View Project 3"
+                    >View Project</a
+                  >
+                </div>
+              </div>
+              <div class="project__content">
+                <h3 class="project__title">Weather Dashboard</h3>
+                <p class="project__description">
+                  Real-time weather application using API integration,
+                  displaying current conditions and forecasts.
+                </p>
+                <div class="project__tags">
+                  <span class="tag">API</span>
+                  <span class="tag">Fetch</span>
+                  <span class="tag">Real-time</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 4 -->
+            <article class="project-card reveal">
+              <div class="project__image">
+                <img
+                  src="https://via.placeholder.com/400x250/f59e0b/ffffff?text=Project+4"
+                  alt="Project 4"
+                  loading="lazy"
+                />
+                <div class="project__overlay">
+                  <a href="#" class="btn btn--small" aria-label="View Project 4"
+                    >View Project</a
+                  >
+                </div>
+              </div>
+              <div class="project__content">
+                <h3 class="project__title">E-commerce Store</h3>
+                <p class="project__description">
+                  Fully responsive e-commerce platform with product catalog,
+                  shopping cart, and checkout functionality.
+                </p>
+                <div class="project__tags">
+                  <span class="tag">Commerce</span>
+                  <span class="tag">Cart</span>
+                  <span class="tag">Responsive</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 5 -->
+            <article class="project-card reveal">
+              <div class="project__image">
+                <img
+                  src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Project+5"
+                  alt="Project 5"
+                  loading="lazy"
+                />
+                <div class="project__overlay">
+                  <a href="#" class="btn btn--small" aria-label="View Project 5"
+                    >View Project</a
+                  >
+                </div>
+              </div>
+              <div class="project__content">
+                <h3 class="project__title">Social Media Dashboard</h3>
+                <p class="project__description">
+                  Dashboard showcasing social media analytics with charts,
+                  insights, and user engagement metrics.
+                </p>
+                <div class="project__tags">
+                  <span class="tag">Dashboard</span>
+                  <span class="tag">Analytics</span>
+                  <span class="tag">Charts</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 6 -->
+            <article class="project-card reveal">
+              <div class="project__image">
+                <img
+                  src="https://via.placeholder.com/400x250/ec4899/ffffff?text=Project+6"
+                  alt="Project 6"
+                  loading="lazy"
+                />
+                <div class="project__overlay">
+                  <a href="#" class="btn btn--small" aria-label="View Project 6"
+                    >View Project</a
+                  >
+                </div>
+              </div>
+              <div class="project__content">
+                <h3 class="project__title">Blog Platform</h3>
+                <p class="project__description">
+                  Content management system for blogging with markdown support,
+                  categories, and search functionality.
+                </p>
+                <div class="project__tags">
+                  <span class="tag">CMS</span>
+                  <span class="tag">Markdown</span>
+                  <span class="tag">Search</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== CONTACT SECTION ========== -->
+      <section id="contact" class="contact">
+        <div class="container contact__container">
+          <div class="contact__info reveal">
+            <h2 class="section__title">Let's Work Together</h2>
+            <p class="contact__description">
+              Have a project in mind or want to discuss opportunities? I'd love
+              to hear from you. Fill out the form or reach out via email.
+            </p>
+
+            <!-- Contact Links -->
+            <div class="contact__links">
+              <a href="mailto:ayoubdarkaoui006@gmail.com" class="contact__link">
+                <span class="contact__icon">✉️</span>
+                <span>ayoubdarkaoui006@gmail.com</span>
+              </a>
+              <a href="tel:+212 711-102367" class="contact__link">
+                <span class="contact__icon">📱</span>
+                <span>+212 711-102367</span>
+              </a>
+              <a href="#" class="contact__link">
+                <span class="contact__icon">📍</span>
+                <span>Casablanca</span>
+              </a>
             </div>
-            <div>
-              <label for="email" class="block text-sm text-gray-300">Email</label>
-              <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-md bg-gray-900 border border-gray-700 px-3 py-2" />
+
+            <!-- Social Links -->
+            <div class="social__links">
+              <a href="#" class="social__link" aria-label="GitHub">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social__link" aria-label="LinkedIn">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.81 0-9.728h3.554v1.375c.427-.659 1.191-1.597 2.897-1.597 2.117 0 3.704 1.382 3.704 4.35v5.6zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.704 0-.954.77-1.704 1.956-1.704 1.187 0 1.915.75 1.948 1.704 0 .946-.761 1.704-1.989 1.704zm1.586 11.597H3.73V9.579h3.193v10.873zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social__link" aria-label="Twitter">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M23.953 4.57a10 10 0 002.856-9.58 11.9 11.9 0 01-3.39 1.317 5.686 5.686 0 00-9.775-2.476c-2.672 2.672-2.574 6.963.343 9.58A10.06 10.06 0 012.84 4.15a5.64 5.64 0 001.755 7.591 5.63 5.63 0 01-2.557-.686v.068c0 2.585 1.939 4.944 4.462 5.45a5.63 5.63 0 01-2.526.097 5.694 5.694 0 005.314 3.957 11.38 11.38 0 01-7.11 2.556c-.464 0-.916-.028-1.366-.084a15.964 15.964 0 008.614 2.585c10.34 0 15.98-8.592 15.98-16.045 0-.245-.005-.49-.014-.734a11.41 11.41 0 002.8-2.915z"
+                  />
+                </svg>
+              </a>
             </div>
-            <div>
-              <label for="message" class="block text-sm text-gray-300">Message</label>
-              <textarea id="message" name="message" rows="5" required class="mt-1 block w-full rounded-md bg-gray-900 border border-gray-700 px-3 py-2"></textarea>
+          </div>
+
+          <!-- Contact Form -->
+          <form class="contact__form reveal" id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Ayoub Ed-darkaoui</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input"
+                placeholder="John Doe"
+                required
+              />
             </div>
-            <div>
-              <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-primary to-accent text-gray-900 font-medium">Send Message</button>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="you@example.com"
+                required
+              />
             </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="form-input"
+                placeholder="Project Inquiry"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                rows="6"
+                placeholder="Your message here..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full">
+              Send Message
+            </button>
+            <p class="form-notice" id="formNotice" style="display: none"></p>
           </form>
-
-          <aside class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-            <h3 class="font-semibold">Let's connect</h3>
-            <p class="mt-2 text-gray-300">Email: <a href="mailto:hello@yourdomain.com" class="text-primary">hello@yourdomain.com</a></p>
-            <div class="mt-4 flex gap-3">
-              <a href="https://github.com/yourusername" class="text-gray-300 hover:text-white">GitHub</a>
-              <a href="https://linkedin.com/in/yourprofile" class="text-gray-300 hover:text-white">LinkedIn</a>
-            </div>
-          </aside>
         </div>
       </section>
-
-      <!-- Footer (reusable) -->
-      <footer class="py-10 border-t border-gray-800 mt-12">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p class="text-sm text-gray-400">© 2026 Ayoub Ed-darkaoui — Front-End Developer</p>
-          <div class="flex gap-3">
-            <a href="https://github.com/yourusername" class="text-gray-300 hover:text-white">GitHub</a>
-            <a href="https://linkedin.com/in/yourprofile" class="text-gray-300 hover:text-white">LinkedIn</a>
-          </div>
-        </div>
-      </footer>
-
     </main>
 
-    <!-- Minimal JS: menu toggle, smooth scroll, contact mailto -->
-    <script src="main.js"></script>
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="container footer__content">
+        <p class="footer__text">&copy; 2024 Your Name. All rights reserved.</p>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <a href="#" class="footer__link">Terms of Service</a>
+          <a href="#" class="footer__link">Sitemap</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
   </body>
 </html>
