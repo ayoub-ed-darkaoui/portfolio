@@ -1,44 +1,225 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--
+  index.html
+  Tailwind-based, dark-mode-first portfolio home page
+  Uses Tailwind CDN for utilities; minimal JS in main.js
+-->
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Ayoub Ed-darkaoui — Front-End Developer. Responsive, accessible web interfaces using HTML, CSS, JavaScript and Tailwind." />
+    <title>Ayoub Ed-darkaoui — Front-End Developer</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portflio website</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- Tailwind CDN with small config (dark mode by class) -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#6c8cff',
+              accent: '#00c2a8'
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-</head>
+    <!-- Fallback minimal styling for print or no-js (optional) -->
+    <style>@media (prefers-color-scheme: dark) { html:not(.dark) { color-scheme: dark; } }</style>
+  </head>
+  <body class="bg-gray-900 text-gray-100 antialiased leading-relaxed">
 
-<body>
-    <div class="hero-header">
-        <div class="wrapper">
-            <header>
-                <div class="logo">
-                    <i class="fa-solid fa-q"></i>
-                    <div class="logo-text">Ayoub Ed-darkaoui</div>
-                </div>
-                <nav>
-                    <div class="togglebtn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <ul class="navlinks">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Resume</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+    <!-- Navbar (reusable) -->
+    <header class="bg-transparent sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center justify-between py-6">
+          <a href="/" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center text-gray-900 font-bold">AE</div>
+            <span class="font-semibold text-lg">Ayoub Ed-darkaoui</span>
+          </a>
 
+          <!-- Desktop nav -->
+          <nav class="hidden md:flex items-center gap-6">
+            <a href="/" class="text-gray-300 hover:text-white transition">Home</a>
+            <a href="experience.html" class="text-gray-300 hover:text-white transition">Experience</a>
+            <a href="education.html" class="text-gray-300 hover:text-white transition">Education</a>
+            <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+          </nav>
 
-
-                    </ul>
-                </nav>
-            </header>
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" class="p-2 rounded-md bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary">
+              <span class="sr-only">Open menu</span>
+              <!-- icon -->
+              <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
-    </div>
+      </div>
 
-</body>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="hidden md:hidden bg-gray-800/60 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-3">
+          <a href="/" class="text-gray-200 py-2">Home</a>
+          <a href="experience.html" class="text-gray-200 py-2">Experience</a>
+          <a href="education.html" class="text-gray-200 py-2">Education</a>
+          <a href="#contact" class="text-gray-200 py-2">Contact</a>
+        </div>
+      </div>
+    </header>
 
+    <main class="max-w-6xl mx-auto px-6">
+
+      <!-- Hero -->
+      <section class="pt-12 pb-16 md:pb-24">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+              Ayoub Ed-darkaoui
+            </h1>
+            <p class="mt-2 text-primary font-semibold">Front-End Developer</p>
+            <p class="mt-6 text-gray-300 max-w-xl">I build production-ready front-end applications with a focus on performance, accessibility, and maintainability. Experienced with modern JavaScript, Tailwind CSS, and design systems.</p>
+
+            <div class="mt-6 flex gap-4">
+              <a href="experience.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-primary to-accent text-gray-900 font-medium hover:scale-105 transition">View Experience</a>
+              <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-gray-700 text-gray-200 hover:bg-gray-800 transition">Projects</a>
+            </div>
+          </div>
+
+          <!-- Visual: professional mock device or headshot -->
+          <div class="order-first md:order-last">
+            <div class="w-full rounded-xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 p-1 shadow-lg">
+              <img src="hero.jpg" alt="Headshot" class="w-full h-64 object-cover rounded-lg" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="py-12" id="about">
+        <h2 class="text-2xl font-semibold">About Me</h2>
+        <p class="mt-4 text-gray-300 max-w-3xl">Senior-level front-end developer with a strong foundation in building scalable web applications. I specialise in creating component-driven UIs, improving performance, and mentoring teams to adopt best practices. Comfortable working across the stack and collaborating with product and design.</p>
+      </section>
+
+      <!-- Skills -->
+      <section class="py-12" id="skills">
+        <h2 class="text-2xl font-semibold">Skills</h2>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Skill card -->
+          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <h3 class="font-medium">HTML</h3>
+            <p class="mt-2 text-gray-300 text-sm">Semantic markup, accessibility, SEO-friendly structure.</p>
+          </div>
+
+          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <h3 class="font-medium">CSS</h3>
+            <p class="mt-2 text-gray-300 text-sm">Modern layouts, animations, design systems.</p>
+          </div>
+
+          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <h3 class="font-medium">JavaScript</h3>
+            <p class="mt-2 text-gray-300 text-sm">ES2020+, DOM, state management, performance optimisations.</p>
+          </div>
+
+          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <h3 class="font-medium">Tailwind CSS</h3>
+            <p class="mt-2 text-gray-300 text-sm">Utility-first workflows, theming, responsive design.</p>
+          </div>
+
+          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <h3 class="font-medium">Git</h3>
+            <p class="mt-2 text-gray-300 text-sm">Branching strategies, code reviews, CI workflows.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="py-12" id="projects">
+        <h2 class="text-2xl font-semibold">Projects</h2>
+        <div class="mt-6 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Project card example -->
+          <article class="bg-gray-800 p-5 rounded-lg border border-gray-700 hover:shadow-lg transition">
+            <h3 class="font-semibold">Design System</h3>
+            <p class="mt-2 text-gray-300 text-sm">Built a scalable design system with tokens, components, and documentation. Improved development velocity by 35%.</p>
+            <div class="mt-4 flex gap-2">
+              <a class="text-sm px-3 py-1 rounded bg-primary text-gray-900" href="#">Live</a>
+              <a class="text-sm px-3 py-1 rounded border border-gray-700 text-gray-200" href="#">Code</a>
+            </div>
+          </article>
+
+          <article class="bg-gray-800 p-5 rounded-lg border border-gray-700 hover:shadow-lg transition">
+            <h3 class="font-semibold">Performance Audit Tool</h3>
+            <p class="mt-2 text-gray-300 text-sm">Client project focused on performance profiling and actionable improvements for large e-commerce pages.</p>
+            <div class="mt-4 flex gap-2">
+              <a class="text-sm px-3 py-1 rounded bg-primary text-gray-900" href="#">Live</a>
+              <a class="text-sm px-3 py-1 rounded border border-gray-700 text-gray-200" href="#">Code</a>
+            </div>
+          </article>
+
+          <article class="bg-gray-800 p-5 rounded-lg border border-gray-700 hover:shadow-lg transition">
+            <h3 class="font-semibold">Accessible Forms</h3>
+            <p class="mt-2 text-gray-300 text-sm">Library of accessible form components with validation UX improvements and keyboard support.</p>
+            <div class="mt-4 flex gap-2">
+              <a class="text-sm px-3 py-1 rounded bg-primary text-gray-900" href="#">Live</a>
+              <a class="text-sm px-3 py-1 rounded border border-gray-700 text-gray-200" href="#">Code</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="py-12" id="contact">
+        <h2 class="text-2xl font-semibold">Contact</h2>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form id="contactForm" class="space-y-4 bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <!-- Accessible form, posts via mailto fallback in JS -->
+            <div>
+              <label for="name" class="block text-sm text-gray-300">Name</label>
+              <input id="name" name="name" required class="mt-1 block w-full rounded-md bg-gray-900 border border-gray-700 px-3 py-2" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm text-gray-300">Email</label>
+              <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-md bg-gray-900 border border-gray-700 px-3 py-2" />
+            </div>
+            <div>
+              <label for="message" class="block text-sm text-gray-300">Message</label>
+              <textarea id="message" name="message" rows="5" required class="mt-1 block w-full rounded-md bg-gray-900 border border-gray-700 px-3 py-2"></textarea>
+            </div>
+            <div>
+              <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-primary to-accent text-gray-900 font-medium">Send Message</button>
+            </div>
+          </form>
+
+          <aside class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h3 class="font-semibold">Let's connect</h3>
+            <p class="mt-2 text-gray-300">Email: <a href="mailto:hello@yourdomain.com" class="text-primary">hello@yourdomain.com</a></p>
+            <div class="mt-4 flex gap-3">
+              <a href="https://github.com/yourusername" class="text-gray-300 hover:text-white">GitHub</a>
+              <a href="https://linkedin.com/in/yourprofile" class="text-gray-300 hover:text-white">LinkedIn</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Footer (reusable) -->
+      <footer class="py-10 border-t border-gray-800 mt-12">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-sm text-gray-400">© 2026 Ayoub Ed-darkaoui — Front-End Developer</p>
+          <div class="flex gap-3">
+            <a href="https://github.com/yourusername" class="text-gray-300 hover:text-white">GitHub</a>
+            <a href="https://linkedin.com/in/yourprofile" class="text-gray-300 hover:text-white">LinkedIn</a>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+
+    <!-- Minimal JS: menu toggle, smooth scroll, contact mailto -->
+    <script src="main.js"></script>
+  </body>
 </html>
